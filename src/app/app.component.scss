@@ -1,0 +1,33 @@
+.table {
+  max-width: 1200px;
+  margin: 20px auto;
+
+  &-filter {
+    display: flex;
+    gap: 15px;
+  }
+
+  &-column {
+    margin-left: auto;
+  }
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  padding: 4px;
+  border-radius: 5px;
+  color: white;
+  font-size: 12px;
+
+  &-success {
+    background: rgba(34, 197, 94, 0.16);
+    color: #22c55e;
+  }
+
+  &-danger {
+    background: rgba(239, 68, 68, 0.16);
+    color: #ef4444;
+  }
+}

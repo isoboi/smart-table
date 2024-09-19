@@ -1,0 +1,47 @@
+:host {
+  display: flex;
+  align-items: center;
+  margin-top: 16px;
+  gap: 4px;
+}
+
+.pagination {
+  &-btn {
+    cursor: pointer;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 10px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s ease-in-out background-color;
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 500;
+    background: white;
+
+    &:hover,
+    &:active {
+      background: #f1f5f9;
+    }
+
+    &:focus {
+      outline: 0;
+    }
+
+    &:disabled {
+      opacity: .7;
+      cursor: not-allowed;
+    }
+
+    &.active {
+      background: #eff6ff;
+      color: #1d4ed8;
+    }
+  }
+  &-previous, &-next {
+    font-weight: 600;
+  }
+}

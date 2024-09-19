@@ -1,0 +1,26 @@
+<div
+  appOutsideClick
+  (outsideClick)="isOpen.set(false)"
+  class="multi-select-container"
+>
+  <div class="multi-select" (click)="toggleDropdown()">
+    <span>{{ displaySelectedOptions || placeholder() }}</span>
+    <div class="arrow" [class.active]="isOpen()"></div>
+  </div>
+
+  @if (isOpen()) {
+    <ul class="dropdown">
+      @for (option of options(); track option) {
+        <li>
+          <input
+            [id]="option.value"
+            type="checkbox"
+            [checked]="isSelected(option)"
+            (change)="toggleSelection(option)"
+          />
+          <label [for]="option.value">{{ option.label }}</label>
+        </li>
+      }
+    </ul>
+  }
+</div>

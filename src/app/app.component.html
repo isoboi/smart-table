@@ -1,0 +1,39 @@
+<div class="table">
+  <form [formGroup]="formFilter" class="table-filter">
+    <input formControlName="search" placeholder="Поиск" type="search" />
+
+    <s-select placeholder="Choose status" formControlName="isActive" [options]="status()" />
+    <s-select placeholder="Choose favouriteFruit" formControlName="favouriteFruit" [options]="favouriteFruits()" />
+
+    <button class="btn-primary" (click)="clearFilter()">Clear filter</button>
+
+    <s-multi-select class="table-column" placeholder="Choose columns" formControlName="columns" [options]="columns()" />
+  </form>
+  <s-table
+    (sortChanged)="applySort($event)"
+    [paginator]="true"
+    [value]="usersFiltered()"
+    [columns]="columnsFiltered()"
+    [columnSorting]="['email', 'name.first', 'company', 'age', 'isActive', 'favoriteFruit']"
+  >
+    <ng-template sTableBody let-item="item">
+      <tr>
+        <td *ngIf="isExistColumn('picture')">
+          <img [src]="item.picture" alt="..." />
+        </td>
+        <td *ngIf="isExistColumn('email')">{{ item?.email }}</td>
+        <td *ngIf="isExistColumn('name.first')">{{ item?.name?.first }} {{ item.name.last }}</td>
+        <td *ngIf="isExistColumn('age')">{{ item?.age }}</td>
+        <td *ngIf="isExistColumn('company')">{{ item?.company ?? '-' }}</td>
+        <td *ngIf="isExistColumn('favoriteFruit')">
+          {{ item?.favoriteFruit }}
+        </td>
+        <td *ngIf="isExistColumn('isActive')">
+          <span class="badge badge-{{ item.isActive ? 'success' : 'danger' }}">
+            {{ item.isActive ? 'active' : 'inactive' }}
+          </span>
+        </td>
+      </tr>
+    </ng-template>
+  </s-table>
+</div>

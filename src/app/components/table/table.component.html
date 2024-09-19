@@ -1,0 +1,32 @@
+<table>
+  <tr>
+    @for (column of columns(); track column) {
+      <th (click)="onSortChange(column)">
+        {{ column.label }}
+
+        @if (isDescSorting(column.value)) {
+          <span>↓</span>
+        }
+
+        @if (isAscSorting(column.value)) {
+          <span>↑</span>
+        }
+      </th>
+    }
+  </tr>
+
+  @for (row of value() | pagination: pagination(); track index; let index = $index) {
+    <ng-template #defaultBody>
+      <tr>
+        @for (column of columns(); track column) {
+          <td>{{ row | nestedValue: column.value }}</td>
+        }
+      </tr>
+    </ng-template>
+    <ng-container [ngTemplateOutlet]="bodyTemplate() || defaultBody" [ngTemplateOutletContext]="{ item: row }" />
+  }
+</table>
+
+@if (paginator()) {
+  <s-paginator [total]="totalPages()" (onPageChange)="onPageChange($event)" />
+}

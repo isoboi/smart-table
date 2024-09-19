@@ -1,0 +1,59 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  color: #64748b;
+}
+
+:root {
+  --table-border-color: #e2e8f0;
+  --table-row-background: #f8fafc;
+}
+
+table {
+  width: 100%;
+  border-spacing: 0;
+}
+
+tr,
+th {
+  cursor: pointer;
+}
+
+td,
+th {
+  border-bottom: 1px solid var(--table-border-color);
+  padding: 12px 15px;
+  text-align: left;
+}
+
+tr:nth-child(even) {
+  background: var(--table-row-background);
+}
+
+td > img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+input, select {
+  border: 1px solid var(--table-border-color);
+  padding: 8px 10px;
+  border-radius: 4px;
+  outline: none;
+
+  &:focus {
+    border-color: #60a5fa;
+  }
+}
+
+button.btn-primary {
+  border: none;
+  padding: 8px 10px;
+  background: #60a5fa;
+  color: white;
+  border-radius: 4px;
+}

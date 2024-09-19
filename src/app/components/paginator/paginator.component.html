@@ -1,0 +1,33 @@
+@if (totalPageNumbers() > 0) {
+  <button
+    class="pagination-btn pagination-previous"
+    [disabled]="page() === 1"
+    (click)="previousPage()"
+  >
+    <
+  </button>
+  @for (pageLink of pageLinks; track pageLink) {
+    <button
+      class="pagination-btn"
+      [class.active]="page() === pageLink"
+      (click)="pageChange(pageLink)"
+    >
+      {{ pageLink }}
+    </button>
+  }
+  <button
+    class="pagination-btn pagination-next"
+    [disabled]="page() === totalPageNumbers()"
+    (click)="nextPage()"
+  >
+    >
+  </button>
+}
+
+<select (change)="onPageSizeChange($event)">
+  @for (size of pageSizeOptions(); track size) {
+    <option [value]="size">
+      {{ size }}
+    </option>
+  }
+</select>
